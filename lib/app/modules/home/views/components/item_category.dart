@@ -21,6 +21,7 @@ class ItemCategory extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
+        SizedBox(height: 5),
         Text(
           title,
           style: TextStyle(
