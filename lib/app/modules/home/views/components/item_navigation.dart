@@ -18,7 +18,7 @@ class ItemNav extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          height: 25,
+          height: 18,
           child: Image.asset(
             (status == true)
                 ? "assets/icons/$icon-active.png"
