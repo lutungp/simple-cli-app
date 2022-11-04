@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/home_controller.dart';
+import 'package:simple_cli_app/app/modules/home/controllers/home_controller.dart';
+import 'package:simple_cli_app/app/modules/home/views/components/item_category.dart';
+import 'package:simple_cli_app/app/modules/home/views/components/item_navigation.dart';
+import 'package:simple_cli_app/app/modules/home/views/components/newest_item.dart';
+import 'package:simple_cli_app/app/modules/home/views/components/status_card.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -383,147 +387,6 @@ class HomeView extends GetView<HomeController> {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class NewestItem extends StatelessWidget {
-  const NewestItem({Key? key, required this.image}) : super(key: key);
-
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 10),
-      width: Get.width * 0.7,
-      height: 130,
-      decoration: BoxDecoration(
-        color: Colors.amber,
-        borderRadius: BorderRadius.circular(5),
-        image: DecorationImage(
-          image: AssetImage(image),
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
-
-class ItemCategory extends StatelessWidget {
-  const ItemCategory({Key? key, required this.icon, required this.title})
-      : super(key: key);
-
-  final String title;
-  final String icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 40,
-          height: 40,
-          child: Image.asset(
-            "assets/icons/$icon.png",
-            fit: BoxFit.cover,
-          ),
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 12,
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class ItemNav extends StatelessWidget {
-  const ItemNav({
-    Key? key,
-    required this.status,
-    required this.title,
-    required this.icon,
-  }) : super(key: key);
-
-  final bool status;
-  final String title;
-  final String icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          height: 25,
-          child: Image.asset(
-            (status == true)
-                ? "assets/icons/$icon-active.png"
-                : "assets/icons/$icon.png",
-            fit: BoxFit.contain,
-          ),
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            color: (status == true) ? Color(0xFFE52D27) : Color(0xFF747D8C),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class StatusCard extends StatelessWidget {
-  const StatusCard(
-      {Key? key, required this.title, required this.data, required this.satuan})
-      : super(key: key);
-
-  final String title;
-  final String data;
-  final String satuan;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        padding: EdgeInsets.all(10),
-        width: Get.width * 0.25,
-        height: 70,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-            RichText(
-              text: TextSpan(
-                  text: data,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFEC2028),
-                  ),
-                  children: [
-                    TextSpan(
-                        text: " $satuan",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Color(0xFF747D8C),
-                        ))
-                  ]),
-            )
-          ],
-        ),
       ),
     );
   }
