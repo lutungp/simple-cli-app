@@ -164,8 +164,8 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 Container(
                                   padding: EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 8,
+                                    horizontal: 5,
+                                    vertical: 1.4,
                                   ),
                                   decoration: BoxDecoration(
                                     color: Color(0xFFF7B731),
@@ -176,6 +176,7 @@ class HomeView extends GetView<HomeController> {
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
@@ -214,12 +215,168 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
                 Container(
-                  height: 10,
-                  color: Color(0xFFF1F2F6),
+                  height: 7,
+                  color: Colors.grey[400],
                 ),
                 Expanded(
                   child: Container(
-                    color: Colors.purple,
+                    // color: Colors.purple,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListView(
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            children: [
+                              SizedBox(height: 20),
+                              Text(
+                                "Kategori Paket",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ItemCategory(
+                                    title: "Internet",
+                                    icon: "browser",
+                                  ),
+                                  ItemCategory(
+                                    title: "Telpon",
+                                    icon: "phone",
+                                  ),
+                                  ItemCategory(
+                                    title: "SMS",
+                                    icon: "message",
+                                  ),
+                                  ItemCategory(
+                                    title: "Roaming",
+                                    icon: "plane",
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ItemCategory(
+                                    title: "Hiburan",
+                                    icon: "cinema",
+                                  ),
+                                  ItemCategory(
+                                    title: "Unggulan",
+                                    icon: "toprated",
+                                  ),
+                                  ItemCategory(
+                                    title: "Tersimpan",
+                                    icon: "saved",
+                                  ),
+                                  ItemCategory(
+                                    title: "Riwayat",
+                                    icon: "history",
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Terbaru dari telkomsel",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    "Lihat semua",
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 20),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    NewestItem(
+                                      image: "assets/banners/banner-1.png",
+                                    ),
+                                    NewestItem(
+                                      image: "assets/banners/banner-2.png",
+                                    ),
+                                    NewestItem(
+                                      image: "assets/banners/banner-1.png",
+                                    ),
+                                    NewestItem(
+                                      image: "assets/banners/banner-2.png",
+                                    ),
+                                    NewestItem(
+                                      image: "assets/banners/banner-1.png",
+                                    ),
+                                    NewestItem(
+                                      image: "assets/banners/banner-2.png",
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 30),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            bottom: 5,
+                          ),
+                          height: 70,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              top: BorderSide(
+                                color: Color(0xFF747D8C),
+                              ),
+                            ),
+                          ),
+                          // color: Colors.amber,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ItemNav(
+                                status: true,
+                                title: "Beranda",
+                                icon: "home",
+                              ),
+                              ItemNav(
+                                status: false,
+                                title: "Riwayat",
+                                icon: "clock",
+                              ),
+                              ItemNav(
+                                status: false,
+                                title: "Bantuan",
+                                icon: "help",
+                              ),
+                              ItemNav(
+                                status: false,
+                                title: "Inbox",
+                                icon: "inbox",
+                              ),
+                              ItemNav(
+                                status: false,
+                                title: "Akun Saya",
+                                icon: "account",
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -227,6 +384,98 @@ class HomeView extends GetView<HomeController> {
           )
         ],
       ),
+    );
+  }
+}
+
+class NewestItem extends StatelessWidget {
+  const NewestItem({Key? key, required this.image}) : super(key: key);
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 10),
+      width: Get.width * 0.7,
+      height: 130,
+      decoration: BoxDecoration(
+        color: Colors.amber,
+        borderRadius: BorderRadius.circular(5),
+        image: DecorationImage(
+          image: AssetImage(image),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+}
+
+class ItemCategory extends StatelessWidget {
+  const ItemCategory({Key? key, required this.icon, required this.title})
+      : super(key: key);
+
+  final String title;
+  final String icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          child: Image.asset(
+            "assets/icons/$icon.png",
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class ItemNav extends StatelessWidget {
+  const ItemNav({
+    Key? key,
+    required this.status,
+    required this.title,
+    required this.icon,
+  }) : super(key: key);
+
+  final bool status;
+  final String title;
+  final String icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Container(
+          height: 25,
+          child: Image.asset(
+            (status == true)
+                ? "assets/icons/$icon-active.png"
+                : "assets/icons/$icon.png",
+            fit: BoxFit.contain,
+          ),
+        ),
+        Text(
+          title,
+          style: TextStyle(
+            color: (status == true) ? Color(0xFFE52D27) : Color(0xFF747D8C),
+          ),
+        )
+      ],
     );
   }
 }
