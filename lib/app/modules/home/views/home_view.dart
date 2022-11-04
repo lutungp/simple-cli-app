@@ -345,6 +345,7 @@ class HomeView extends GetView<HomeController> {
             decoration: BoxDecoration(
               border: Border(
                 top: BorderSide(
+                  width: 0.2,
                   color: Color(0xFF747D8C),
                 ),
               ),
